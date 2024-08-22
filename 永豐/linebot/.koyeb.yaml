@@ -1,0 +1,8 @@
+name: line-bot-app
+services:
+  - name: line-bot-service
+    docker:
+      image: xiaojung/sinopac_linebot:latest
+      auto_deploy: true
+    ports:
+      - 5001
