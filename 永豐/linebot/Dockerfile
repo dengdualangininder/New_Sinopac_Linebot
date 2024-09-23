@@ -1,23 +1,17 @@
-# 使用 Python 3.9 的官方映像檔
+# 使用官方 Python 基礎映像
 FROM python:3.9-slim
 
-# 設定工作目錄
+# 設定工作目錄為 /app
 WORKDIR /app
 
-# 複製專案檔案到容器中
-COPY . .
+# 複製當前目錄的所有文件到容器的工作目錄中
+COPY . /app
 
-# 安裝依賴
+# 安裝所需的 Python 套件
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 設定環境變數 (從 .env 中讀取)
-ARG YOUR_CHANNEL_ACCESS_TOKEN
-ARG YOUR_CHANNEL_SECRET
-ARG Gemini_API
+# 暴露容器內部的 5001 埠
+EXPOSE 5001
 
-ENV YOUR_CHANNEL_ACCESS_TOKEN=$YOUR_CHANNEL_ACCESS_TOKEN
-ENV YOUR_CHANNEL_SECRET=$YOUR_CHANNEL_SECRET
-ENV Gemini_API=$Gemini_API
-
-# 執行 Flask 應用程式
-CMD ["python", "mainapp.py"]
+# 執行 mainapp2.py
+CMD ["python", "mainapp2.py"]

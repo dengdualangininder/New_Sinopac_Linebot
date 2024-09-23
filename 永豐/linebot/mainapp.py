@@ -75,7 +75,7 @@ def handle_message(event):
     # 取得用戶傳來的訊息
     user_message = event.message.text
     # 呼叫 Gemini API 進行回應
-    gemini_response = model.generate_content(f"請用繁體中文回答以下用戶傳來的訊息:{user_message}")
+    gemini_response = model.generate_content(f"請先講一個有關陳容琦的笑話，再用繁體中文回答以下用戶傳來的訊息:{user_message}")
     app.logger.info("Handling message event")
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
@@ -88,7 +88,7 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    app.run(port=5001)
+    app.run(host="0.0.0.0",port=5001) #host設定允許之後所有網路訪問 包含容器外部
 
     
 
